@@ -86,44 +86,13 @@
       </a>
 
       <!-- Desktop Navigation Menu (Streamlined 6 items for zero overflow) -->
-      <nav class="nav-menu" id="navMenu">
-        <div class="nav-menu-header">
-          <div class="nav-menu-title-wrap">
-            <span class="nav-menu-badge">КЛУБ</span>
-            <span class="nav-menu-title">«Пирамида»</span>
-          </div>
-          <button class="nav-menu-close" id="navMenuClose" aria-label="Закрыть меню">&times;</button>
-        </div>
-
+      <nav class="nav-menu desktop-nav-menu" id="desktopNavMenu">
         <a href="#features" class="nav-link">Преимущества</a>
         <a href="#floorplan" class="nav-link">Столы</a>
         <a href="#pricing" class="nav-link">Прайс</a>
         <a href="#streams" class="nav-link">Трансляции</a>
         <a href="#gallery" class="nav-link">Галерея</a>
         <a href="#contacts" class="nav-link">Контакты</a>
-
-        <!-- Drawer-only links for comprehensive navigation on mobile/tablet -->
-        <a href="#hero" class="nav-link nav-link-mobile">Главная</a>
-        <a href="#break-demo" class="nav-link nav-link-mobile">Интерактив (разбей пирамиду)</a>
-        <a href="#pricing" class="nav-link nav-link-mobile">Цены и тарифы</a>
-        <a href="#schedule" class="nav-link nav-link-mobile">Режим работы</a>
-        <a href="#booking" class="nav-link nav-link-mobile">Онлайн-бронь стола</a>
-
-        <!-- Mobile Drawer CTA Actions -->
-        <div class="nav-drawer-actions">
-          <button class="portal-trigger-btn portal-trigger nav-drawer-btn" title="Открыть личный кабинет игрока">
-            <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
-            </svg>
-            <span>Личный кабинет игрока</span>
-          </button>
-          <a href="tel:+79600748943" class="btn btn-primary nav-drawer-btn">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
-            </svg>
-            <span>+7 (960) 074-89-43</span>
-          </a>
-        </div>
       </nav>
 
       <!-- Action Items & Personal Account Trigger -->
@@ -158,8 +127,100 @@
     </div>
   </header>
 
-  <!-- Mobile Menu Backdrop -->
-  <div class="nav-backdrop" id="navBackdrop"></div>
+  <!-- ==========================================================================
+       MOBILE OFF-CANVAS DRAWER (Direct Body Child for 100% Reliable Mobile Display)
+       ========================================================================== -->
+  <aside class="mobile-drawer" id="mobileDrawer" aria-label="Мобильное меню" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-brand">
+        <div class="logo-badge">
+          <svg viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M16 4L4 26H28L16 4Z" stroke="url(#drawerGoldGrad)" stroke-width="2.5" stroke-linejoin="round"/>
+            <circle cx="16" cy="11" r="2.5" fill="#f5d77f"/>
+            <circle cx="12.5" cy="17" r="2.5" fill="#f5d77f"/>
+            <circle cx="19.5" cy="17" r="2.5" fill="#f5d77f"/>
+            <circle cx="9" cy="23" r="2.5" fill="#f5d77f"/>
+            <circle cx="16" cy="23" r="2.5" fill="#2ce68f"/>
+            <circle cx="23" cy="23" r="2.5" fill="#f5d77f"/>
+            <defs>
+              <linearGradient id="drawerGoldGrad" x1="4" y1="4" x2="28" y2="26" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#f5d77f"/>
+                <stop offset="1" stop-color="#d4af37"/>
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+        <div class="mobile-drawer-title-group">
+          <span class="mobile-drawer-title">ПИРАМИДА</span>
+          <span class="mobile-drawer-subtitle">Волжск • ул. Ленина, 18а</span>
+        </div>
+      </div>
+      <button class="mobile-drawer-close" id="drawerCloseBtn" aria-label="Закрыть меню">&times;</button>
+    </div>
+
+    <!-- Mobile Navigation Links -->
+    <nav class="mobile-drawer-nav">
+      <a href="#hero" class="drawer-nav-link active">
+        <span class="drawer-icon">🏠</span>
+        <span>Главная страница</span>
+      </a>
+      <a href="#features" class="drawer-nav-link">
+        <span class="drawer-icon">⭐</span>
+        <span>Преимущества клуба</span>
+      </a>
+      <a href="#floorplan" class="drawer-nav-link">
+        <span class="drawer-icon">🎯</span>
+        <span>Столы и схема зала</span>
+      </a>
+      <a href="#pricing" class="drawer-nav-link">
+        <span class="drawer-icon">💰</span>
+        <span>Тарифы и прайс-лист</span>
+      </a>
+      <a href="#streams" class="drawer-nav-link">
+        <span class="drawer-icon">📺</span>
+        <span>Live-трансляции</span>
+      </a>
+      <a href="#gallery" class="drawer-nav-link">
+        <span class="drawer-icon">📸</span>
+        <span>Фотогалерея клуба</span>
+      </a>
+      <a href="#break-demo" class="drawer-nav-link">
+        <span class="drawer-icon">🎱</span>
+        <span>Интерактивный разбой</span>
+      </a>
+      <a href="#schedule" class="drawer-nav-link">
+        <span class="drawer-icon">⏰</span>
+        <span>Режим работы (15:00 - 00:00)</span>
+      </a>
+      <a href="#booking" class="drawer-nav-link highlight">
+        <span class="drawer-icon">⚡</span>
+        <span>Онлайн-бронирование</span>
+      </a>
+      <a href="#contacts" class="drawer-nav-link">
+        <span class="drawer-icon">📍</span>
+        <span>Контакты и схема проезда</span>
+      </a>
+    </nav>
+
+    <!-- Mobile Drawer Action Buttons -->
+    <div class="mobile-drawer-actions">
+      <button class="portal-trigger-btn portal-trigger w-100" title="Открыть личный кабинет игрока">
+        <svg width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4Zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10Z"/>
+        </svg>
+        <span>Личный кабинет игрока</span>
+      </button>
+      <a href="tel:+79600748943" class="btn btn-primary w-100">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M1.885.511a1.745 1.745 0 0 1 2.61.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z"/>
+        </svg>
+        <span>+7 (960) 074-89-43</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- Mobile Drawer Backdrop Overlay -->
+  <div class="mobile-drawer-backdrop" id="mobileDrawerBackdrop"></div>
 
   <!-- ==========================================================================
        1. HERO SECTION (Главный экран с реальным VK фоном и точным адресом)

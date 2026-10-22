@@ -132,25 +132,37 @@ function initAnalyticsTracking() {
    ========================================================================== */
 function initHeader() {
   const header = document.querySelector('.site-header');
-  const burger = document.querySelector('.nav-burger');
-  const menu = document.querySelector('.nav-menu');
-  const navBackdrop = document.querySelector('#navBackdrop');
-  const closeBtn = document.querySelector('#navMenuClose');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const drawerBtns = document.querySelectorAll('.nav-drawer-btn');
+  const burger = document.querySelector('#burgerBtn') || document.querySelector('.nav-burger');
+  const drawer = document.querySelector('#mobileDrawer');
+  const backdrop = document.querySelector('#mobileDrawerBackdrop');
+  const closeBtn = document.querySelector('#drawerCloseBtn');
+  const drawerLinks = document.querySelectorAll('.drawer-nav-link');
+  const drawerActions = document.querySelectorAll('.mobile-drawer-actions button, .mobile-drawer-actions a:not([href^="tel:"])');
 
-  const closeMenu = () => {
+  const closeDrawer = () => {
     burger?.classList.remove('open');
-    menu?.classList.remove('open');
-    navBackdrop?.classList.remove('open');
+    burger?.setAttribute('aria-expanded', 'false');
+    drawer?.classList.remove('open');
+    drawer?.setAttribute('aria-hidden', 'true');
+    backdrop?.classList.remove('open');
     document.body.style.overflow = '';
   };
 
-  const openMenu = () => {
+  const openDrawer = () => {
     burger?.classList.add('open');
-    menu?.classList.add('open');
-    navBackdrop?.classList.add('open');
+    burger?.setAttribute('aria-expanded', 'true');
+    drawer?.classList.add('open');
+    drawer?.setAttribute('aria-hidden', 'false');
+    backdrop?.classList.add('open');
     document.body.style.overflow = 'hidden';
+  };
+
+  const toggleDrawer = () => {
+    if (drawer?.classList.contains('open')) {
+      closeDrawer();
+    } else {
+      openDrawer();
+    }
   };
 
   const handleScroll = () => {
@@ -165,33 +177,32 @@ function initHeader() {
   window.addEventListener('scroll', handleScroll, { passive: true });
   handleScroll();
 
-  if (burger && menu) {
-    burger.addEventListener('click', () => {
-      const isOpen = menu.classList.contains('open');
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    });
+  burger?.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleDrawer();
+  });
 
-    closeBtn?.addEventListener('click', closeMenu);
-    navBackdrop?.addEventListener('click', closeMenu);
+  closeBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    closeDrawer();
+  });
 
-    navLinks.forEach(link => {
-      link.addEventListener('click', closeMenu);
-    });
+  backdrop?.addEventListener('click', closeDrawer);
 
-    drawerBtns.forEach(btn => {
-      btn.addEventListener('click', closeMenu);
-    });
+  drawerLinks.forEach(link => {
+    link.addEventListener('click', closeDrawer);
+  });
 
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) {
-        closeMenu();
-      }
-    });
-  }
+  drawerActions.forEach(action => {
+    action.addEventListener('click', closeDrawer);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && drawer?.classList.contains('open')) {
+      closeDrawer();
+    }
+  });
 
   function highlightActiveNavLink() {
     const sections = document.querySelectorAll('section[id]');
@@ -201,7 +212,7 @@ function initHeader() {
       const sectionHeight = section.offsetHeight;
       const sectionTop = section.offsetTop;
       const sectionId = section.getAttribute('id');
-      const navLinksForSection = document.querySelectorAll(`.nav-link[href="#${sectionId}"]`);
+      const navLinksForSection = document.querySelectorAll(`a[href="#${sectionId}"]`);
 
       if (navLinksForSection.length > 0) {
         const isActive = scrollY >= sectionTop && scrollY < sectionTop + sectionHeight;
