@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <radialGradient id="ballGrad" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="70%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </radialGradient>
+    <linearGradient id="woodGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d4af37"/>
+      <stop offset="50%" stop-color="#8a611c"/>
+      <stop offset="100%" stop-color="#4a310c"/>
+    </linearGradient>
+    <linearGradient id="clothGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e4a31"/>
+      <stop offset="100%" stop-color="#072619"/>
+    </linearGradient>
+  </defs>
+  <!-- Background circle with dark felt -->
+  <circle cx="32" cy="32" r="30" fill="url(#clothGrad)" stroke="url(#woodGrad)" stroke-width="2.5"/>
+  <!-- Triangle rack outline -->
+  <polygon points="32,12 50,47 14,47" fill="none" stroke="url(#woodGrad)" stroke-width="3" stroke-linejoin="round"/>
+  <!-- Billiard balls inside triangle (Pyramid) -->
+  <!-- Top row (1 ball) -->
+  <circle cx="32" cy="22" r="4.2" fill="url(#ballGrad)" />
+  <!-- Row 2 (2 balls) -->
+  <circle cx="27.8" cy="29.2" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="36.2" cy="29.2" r="4.2" fill="url(#ballGrad)" />
+  <!-- Row 3 (3 balls) -->
+  <circle cx="23.6" cy="36.4" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="32" cy="36.4" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="40.4" cy="36.4" r="4.2" fill="url(#ballGrad)" />
+  <!-- Row 4 (4 balls) -->
+  <circle cx="19.4" cy="43.6" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="27.8" cy="43.6" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="36.2" cy="43.6" r="4.2" fill="url(#ballGrad)" />
+  <circle cx="44.6" cy="43.6" r="4.2" fill="url(#ballGrad)" />
+</svg>
